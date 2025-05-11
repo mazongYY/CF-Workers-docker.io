@@ -383,7 +383,15 @@ async function searchInterface() {
 					</svg>
 				</button>
 			</div>
-			<p class="tips">基于 Cloudflare Workers / Pages 构建，利用全球边缘网络实现毫秒级响应。</p>
+			<p class="tips">基于 Cloudflare Workers / Pages 构建，利用全球边缘网络实现毫秒级响应。<br>使用说明：<br>1. 官方镜像路径示例：<br><div class="code-block"><pre><code>docker pull docker.0037.fit/stilleshan/frpc:latest</code><button class="copy-btn" onclick="copyToClipboard(this)">复制</button></pre></div><div class="code-block"><pre><code>docker pull docker.0037.fit/library/nginx:stable-alpine3.19-perl</code><button class="copy-btn" onclick="copyToClipboard(this)">复制</button></pre></div><br>2. 设置镜像加速：<br><div class="code-block"><pre><code>修改/etc/docker/daemon.json（如果不存在则创建）
+sudo mkdir -p /etc/docker
+sudo tee /etc/docker/daemon.json <<-'EOF'
+{
+  "registry-mirrors": ["https://docker.0037.fit"]
+}
+EOF
+sudo systemctl daemon-reload
+sudo systemctl restart docker</code><button class="copy-btn" onclick="copyToClipboard(this)">复制</button></pre></div></p><script>function copyToClipboard(button) {const code = button.previousElementSibling.textContent;navigator.clipboard.writeText(code).then(() => {button.textContent = '已复制';setTimeout(() => {button.textContent = '复制';}, 2000);});}</script><style>.code-block {position: relative;margin: 10px 0;}.copy-btn {position: absolute;right: 5px;top: 5px;background: var(--primary-color);color: white;border: none;padding: 2px 8px;border-radius: 3px;cursor: pointer;}.copy-btn:hover {background: var(--primary-dark);}</style>
 		</div>
 		<script>
 		function performSearch() {
